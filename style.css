@@ -1,0 +1,11 @@
+.smash button {
+    margin: 40px;
+}
+.poke-container h1 {
+    margin-top: -20px;
+    font-size: 100px;
+}
+#welcome_message button {
+    margin: 20px;
+    font-size: 40pt;
+}

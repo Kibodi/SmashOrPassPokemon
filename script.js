@@ -1,0 +1,145 @@
+const poke_container = document.getElementById("poke_container")
+const message = document.getElementById("welcome_message") 
+const pokemons_number = 900;
+const buttons = document.getElementById("buttons")
+const statsDiv = document.getElementById("stats")
+const smashArray = []
+const passArray = []
+statSNum = document.createElement("p")
+statPNum = document.createElement("p")
+statS = document.createElement("p")
+statP = document.createElement("p")
+
+var stage = 1
+var current_pokemon
+
+const start = () => {
+    titel = document.createElement("h1")
+    titel.id = "schrift"
+    deutsch =document.createElement("button")
+    english =document.createElement("button")
+    deutsch.id = "ger"
+    deutsch.textContent = "Deutsch"
+    english.textContent = "English"
+    english.id = "en"
+    titel.textContent = "Select Language"
+    welcome_message.appendChild(titel)
+    welcome_message.appendChild(deutsch)
+    welcome_message.appendChild(english)
+    deutsch.onclick = () => introDeutsch(titel,deutsch,english)
+    english.onclick = () => introEnglish(titel,deutsch,english)
+}
+
+const introDeutsch = (t,b1,b2) => {
+    t.textContent = "Willkommen zu Smash or Pass Pokemon!"
+    p = document.createElement("p")
+    startbutton = document.createElement("button")
+    p.textContent = "Oder wie ich es nenne: Der Tiefpunkt meiner Karriere als Programmierer. In diesem Spiel geht es darum zu bewerten, ob DU mit dem gezeigten Pokemon gerne schlafen möchtest. Smash heißt Ja und Pass heißt Nein!"
+    startbutton.textContent = "Start"
+    message.removeChild(b1)
+    message.removeChild(b2)
+    welcome_message.appendChild(p)
+    welcome_message.appendChild(startbutton)
+    startbutton.onclick = () => {
+        message.removeChild(p)
+        message.removeChild(startbutton)
+        message.removeChild(t)
+        run()
+    }
+
+}
+    const introEnglish = (t,b1,b2) => {
+        t.textContent = "Welcome to Smash or Pass Pokemon!"
+        p = document.createElement("p")
+        startbutton = document.createElement("button")
+        p.textContent = "Or as I call it: The low point of my career as a programmer. This game is about evaluating whether YOU would like to have sex with the Pokemon shown. Smash means yes and pass means no!"
+        startbutton.textContent = "Start"
+        message.removeChild(b1)
+        message.removeChild(b2)
+        welcome_message.appendChild(p)
+        welcome_message.appendChild(startbutton)
+        startbutton.onclick = () => {
+            message.removeChild(p)
+            message.removeChild(startbutton)
+            message.removeChild(t)
+            run()
+        }
+}
+
+const getPokemon = async (id) => {
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+    const res = await fetch(url);
+    const pokemon = await res.json();
+    current_pokemon = pokemon.name
+    showPokemon(pokemon, id)
+}
+const showPokemon = (pokemon,id) => {
+    const art = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+    if (!document.getElementById("pokeart")) {
+        h1 = document.createElement("h1")
+        img = document.createElement("img")
+        br = document.createElement("br")
+        img.id = "pokeart"
+        h1.id = "poketitle"
+    }
+    img.src = art
+    h1.innerHTML = pokemon.name + " #" +stage + "/#898"
+    poke_container.appendChild(h1)
+    poke_container.appendChild(br)
+    poke_container.appendChild(img)
+    poke_container.appendChild(br)
+}
+const run= ()  => {
+    smash = document.createElement("button")
+    pass = document.createElement("button")
+    smash.textContent = "SMASH"
+    pass.textContent = "PASS"
+    smash.id = "smashButton"
+    pass.id= "passButton"
+    smash.onclick = () => smashing()
+    pass.onclick = () => passing()
+    smash.style.fontSize = "100pt"
+    pass.style.fontSize = "100pt"
+    getPokemon(stage)
+    buttons.appendChild(smash)
+    buttons.appendChild(pass)
+    statsDiv.appendChild(statSNum)
+    statsDiv.appendChild(statPNum)
+    statsDiv.appendChild(statS)
+    statsDiv.appendChild(statP)
+    statSNum.textContent = "Smash: "+smashArray.length
+    statPNum.textContent = "Pass: "+passArray.length
+    statS.textContent = "Would Smash: "
+    statP.textContent = "Would not Smash: "
+
+}
+const smashing = () => {
+    if (stage<=898){
+        statS.textContent = statS.textContent + current_pokemon+", "
+        smashArray.push(current_pokemon)
+        stage++
+        update()
+    }
+}
+const passing = () => {
+    if (stage<=898){
+        statP.textContent = statP.textContent+ current_pokemon+", "
+        passArray.push(current_pokemon)
+        stage++
+        update()
+    }
+}
+
+const update = () => {
+    statSNum.textContent = "Smash: "+smashArray.length
+    statPNum.textContent = "Pass: "+passArray.length
+    getPokemon(stage)
+    if(stage>898) {
+        buttons.removeChild(document.getElementById("smashButton"))
+        buttons.removeChild(document.getElementById("passButton"))
+        poke_container.removeChild(document.getElementById("pokeart"))
+        poke_container.removeChild(document.getElementById("poketitle"))
+    }
+}
+//getPokemon(448)
+start()
