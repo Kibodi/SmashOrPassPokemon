@@ -6,13 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smash or Pass Pokemon!</title>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='mobile.css'>
+    <link rel="stylesheet" href="style.css" media="(min-aspect-ratio: 2/2)">
+
 </head>
 <body>
-    <center>
+        
+    <div id="content">
+        <div id="titelrino"></div>
         <div id="welcome_message"></div>
-        <div id="poke_container" class="poke-container"></div>
-        <div id="buttons" class="smash"></div>
+        <div id="main">
+            <div id="poke_container" class="poke-container">
+            </div>
+            <div id="buttons" class="smash"></div>
+        </div>
+    </div>
+    <center>
         <div id="stats"></div>
     </center>
 </body>

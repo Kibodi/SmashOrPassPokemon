@@ -1,11 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 .smash button {
     margin: 40px;
 }
-.poke-container h1 {
-    margin-top: -20px;
-    font-size: 100px;
-}
+
 #welcome_message button {
     margin: 20px;
     font-size: 40pt;
+}
+#welcome_message h1 {
+    display: block;
+    width: 100%;
+    font-size: 40pt;
+}
+#welcome_message p {
+    hyphens: auto;
+    font-size: 30pt;
+}
+#poketitle {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 50pt;
+}
+#stats {
+    top: 100%;
+    transform: translate(-50%, 0);
+}
+#poke_container img{
+    width: 475px;
+    height: 475px;
+}
+#buttons button {
+    margin: 0px 5px 100px 0px;
+    font-size: 80pt;;
+}
+
+#passButton:hover {
+    background-color: #D54743;
+}
+
+#smashButton:hover {
+    background-color: #65E628;
+}
+#en:hover {
+    background-color: #D54743;
+}
+
+#ger:hover {
+    background-color: #65E628;
+}
+#stert:hover {
+    background-color: #F48116;
 }
