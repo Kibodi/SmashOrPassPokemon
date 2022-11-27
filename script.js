@@ -121,7 +121,7 @@ const run= ()  => {
 
 }
 const smashing = () => {
-    if (stage<=898){
+    if (stage<=pokemons_number){
         statS.textContent = statS.textContent + current_pokemon+", "
         smashArray.push(current_pokemon)
         stage++
@@ -129,7 +129,7 @@ const smashing = () => {
     }
 }
 const passing = () => {
-    if (stage<=898){
+    if (stage<=pokemons_number){
         statP.textContent = statP.textContent+ current_pokemon+", "
         passArray.push(current_pokemon)
         stage++
@@ -140,7 +140,7 @@ const passing = () => {
 const update = () => {
     statSNum.textContent = "Smash: "+smashArray.length
     statPNum.textContent = "Pass: "+passArray.length
-    if(stage>898) {
+    if(stage>pokemons_number) {
         buttons.removeChild(document.getElementById("smashButton"))
         buttons.removeChild(document.getElementById("passButton"))
         document.getElementById("artwork").removeChild(document.getElementById("pokeart"))
