@@ -1,6 +1,6 @@
 const poke_container = document.getElementById("poke_container")
 const message = document.getElementById("welcome_message") 
-const pokemons_number = 900;
+const pokemons_number = 905;
 const buttons = document.getElementById("buttons")
 const statsDiv = document.getElementById("stats")
 const smashArray = []
