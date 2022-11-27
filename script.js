@@ -1,4 +1,5 @@
 const poke_container = document.getElementById("poke_container")
+const titelrino = document.getElementById("titelrino")
 const message = document.getElementById("welcome_message") 
 const pokemons_number = 905;
 const buttons = document.getElementById("buttons")
@@ -144,7 +145,7 @@ const update = () => {
         buttons.removeChild(document.getElementById("smashButton"))
         buttons.removeChild(document.getElementById("passButton"))
         document.getElementById("artwork").removeChild(document.getElementById("pokeart"))
-        poke_container.removeChild(document.getElementById("poketitle"))
+        titelrino.removeChild(document.getElementById("poketitle"))
         poke_container.removeChild(document.getElementById("artwork"))
     } else getPokemon(stage)
 }
