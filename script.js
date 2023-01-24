@@ -87,7 +87,7 @@ const showPokemon = (pokemon,id) => {
         h1.id = "poketitle"
     }
     img.src = art
-    h1.innerHTML = pokemon.name + " #" +stage + "/#1008"
+    h1.innerHTML = pokemon.name[0].toUpperCase() + pokemon.name.slice(1) + " #" +stage + "/#1008"
     artwork.id = "artwork"
     document.getElementById("titelrino").appendChild(h1)
     //poke_container.appendChild(br)
