@@ -6,6 +6,8 @@ const buttons = document.getElementById("buttons")
 const statsDiv = document.getElementById("stats")
 const smashArray = []
 const passArray = []
+var lang = ""
+
 statSNum = document.createElement("p")
 statPNum = document.createElement("p")
 statS = document.createElement("p")
@@ -32,6 +34,7 @@ const start = () => {
 }
 
 const introDeutsch = (t,b1,b2) => {
+    lang = "german"
     t.textContent = "Willkommen zu Smash or Pass Pokemon!"
     p = document.createElement("p")
     startbutton = document.createElement("button")
@@ -51,6 +54,7 @@ const introDeutsch = (t,b1,b2) => {
 
 }
     const introEnglish = (t,b1,b2) => {
+        lang = "english"
         t.textContent = "Welcome to Smash or Pass Pokemon!"
         p = document.createElement("p")
         startbutton = document.createElement("button")
@@ -70,10 +74,10 @@ const introDeutsch = (t,b1,b2) => {
 }
 
 const getPokemon = async (id) => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+    const url = `https://pokeapi.co/api/v2/pokemon-species/${id}`
     const res = await fetch(url);
     const pokemon = await res.json();
-    current_pokemon = pokemon.name
+    current_pokemon = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
     showPokemon(pokemon, id)
 }
 const showPokemon = (pokemon,id) => {
@@ -87,7 +91,27 @@ const showPokemon = (pokemon,id) => {
         h1.id = "poketitle"
     }
     img.src = art
-    h1.innerHTML = pokemon.name[0].toUpperCase() + pokemon.name.slice(1) + " #" +stage + "/#1008"
+    if (lang == "german")
+    {
+        for (let l = 0; l < pokemon.names.length; l++) {
+            if (pokemon.names[l].language.name == 'de') 
+            {
+                current_pokemon = pokemon.names[l].name[0].toUpperCase() + pokemon.names[l].name.slice(1)
+                break;
+            } else if (stage == 906)
+            {
+                current_pokemon = "Felori"
+            } else if (stage == 907)
+            {
+                current_pokemon = "Feliospa"
+            }
+        }
+        h1.innerHTML = current_pokemon + " #" +stage + "/#1008"
+    }
+    if (lang == "english")
+    {
+        h1.innerHTML = current_pokemon +  " #" +stage + "/#1008"
+    }
     artwork.id = "artwork"
     document.getElementById("titelrino").appendChild(h1)
     //poke_container.appendChild(br)
