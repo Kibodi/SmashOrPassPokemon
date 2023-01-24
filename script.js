@@ -1,7 +1,7 @@
 const poke_container = document.getElementById("poke_container")
 const titelrino = document.getElementById("titelrino")
 const message = document.getElementById("welcome_message") 
-const pokemons_number = 905;
+const pokemons_number = 1008;
 const buttons = document.getElementById("buttons")
 const statsDiv = document.getElementById("stats")
 const smashArray = []
@@ -87,7 +87,7 @@ const showPokemon = (pokemon,id) => {
         h1.id = "poketitle"
     }
     img.src = art
-    h1.innerHTML = pokemon.name + " #" +stage + "/#905"
+    h1.innerHTML = pokemon.name + " #" +stage + "/#1008"
     artwork.id = "artwork"
     document.getElementById("titelrino").appendChild(h1)
     //poke_container.appendChild(br)
