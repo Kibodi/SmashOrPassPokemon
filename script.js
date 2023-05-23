@@ -1,7 +1,7 @@
 const poke_container = document.getElementById("poke_container")
 const titelrino = document.getElementById("titelrino")
 const message = document.getElementById("welcome_message") 
-const pokemons_number = 1008;
+const pokemons_number = 1010;
 const buttons = document.getElementById("buttons")
 const statsDiv = document.getElementById("stats")
 const smashArray = []
@@ -98,19 +98,13 @@ const showPokemon = (pokemon,id) => {
             {
                 current_pokemon = pokemon.names[l].name[0].toUpperCase() + pokemon.names[l].name.slice(1)
                 break;
-            } else if (stage == 906)
-            {
-                current_pokemon = "Felori"
-            } else if (stage == 907)
-            {
-                current_pokemon = "Feliospa"
             }
         }
-        h1.innerHTML = current_pokemon + " #" +stage + "/#1008"
+        h1.innerHTML = current_pokemon + " #" +stage + "/#1010"
     }
     if (lang == "english")
     {
-        h1.innerHTML = current_pokemon +  " #" +stage + "/#1008"
+        h1.innerHTML = current_pokemon +  " #" +stage + "/#1010"
     }
     artwork.id = "artwork"
     document.getElementById("titelrino").appendChild(h1)
