@@ -5,7 +5,7 @@ export class Game
     {
         this.smashArray = []
         this.passArary = []
-        this.stage = 1000
+        this.stage = 1
         this.pokemonCount
         this.currentPokemon
 
