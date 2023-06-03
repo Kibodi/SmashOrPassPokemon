@@ -17,7 +17,6 @@ export class Game
         
         this.lang_smash
         this.lang_pass
-
     }
     
     async run()
@@ -112,7 +111,6 @@ export class Game
             document.getElementById("pokeart").src = this.PokeGetter.pokemonArt(this.stage)
             console.log(this.stage)
         }
-
     }
 }
 

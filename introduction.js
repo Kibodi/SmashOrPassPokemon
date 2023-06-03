@@ -105,8 +105,6 @@ export class Starter extends Opener
             this.intEng.startIntro(title)
         }
         this.message.appendChild(english)
-
-
     }
 
     delete_buttons(ger,eng) 

@@ -1,9 +1,5 @@
 export class PokemonGetter
 {
-    constructor()
-    {
-    }
-
     async pokemonName(id, lang) 
     {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
@@ -29,6 +25,4 @@ export class PokemonGetter
         const species = await res.json()
         return species.count
     }
-
-    
 }
