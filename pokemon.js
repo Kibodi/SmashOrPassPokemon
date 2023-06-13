@@ -14,8 +14,11 @@ export class PokemonGetter
         return pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
     }
 
-    pokemonArt(id)
+    pokemonArt(id, shiny)
     {
+        if (shiny) {
+            return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${id}.png`
+        }
         return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
     }
 

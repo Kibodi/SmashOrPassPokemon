@@ -14,9 +14,12 @@ export class Game
         this.titelrino = document.getElementById("titelrino")
         this.statsDiv = document.getElementById("stats")
         this.buttons = document.getElementById("buttons")
+        this.imgId
+        this.h1Id
         
         this.lang_smash
         this.lang_pass
+        this.shiny = false
     }
     
     async run()
@@ -26,11 +29,27 @@ export class Game
         //Titel and Artwork
         var h1 = document.createElement("h1")
         h1.id = "poketitle"
+        this.h1Id = h1.id
         h1.innerHTML = this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`
         
         var img = document.createElement("img")
         img.id = "pokeart"
-        img.src = this.PokeGetter.pokemonArt(this.stage)
+        this.imgId = img.id
+        img.src = this.PokeGetter.pokemonArt(this.stage, this.shiny)
+        img.addEventListener("click", () =>
+        {
+            this.shiny = !this.shiny;
+            document.getElementById(this.imgId).src = this.PokeGetter.pokemonArt(this.stage, this.shiny)
+            if (this.shiny)
+            {
+                document.getElementById(this.h1Id).innerHTML = "Shiny " + this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`
+            }
+            else
+            {
+                document.getElementById(this.h1Id).innerHTML = this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`
+            }
+
+        })
         
         var artwork = document.createElement("div")
         artwork.id = "artwork"
@@ -107,8 +126,15 @@ export class Game
         } else 
         {
             this.currentPokemon = await this.PokeGetter.pokemonName(this.stage, this.lang)
-            document.getElementById("poketitle").innerHTML = this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`
-            document.getElementById("pokeart").src = this.PokeGetter.pokemonArt(this.stage)
+            if (this.shiny)
+            {
+                document.getElementById(this.h1Id).innerHTML = "Shiny " + this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`
+            }
+            else 
+            {
+                document.getElementById(this.h1Id).innerHTML = this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`
+            }
+            document.getElementById("pokeart").src = this.PokeGetter.pokemonArt(this.stage, this.shiny)
             console.log(this.stage)
         }
     }
