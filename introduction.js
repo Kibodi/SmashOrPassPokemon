@@ -1,6 +1,6 @@
 import { Game, GameEnglish, GameGerman } from "./game.js"
 
-export class Opener 
+class Opener 
 {
     constructor() 
     {
@@ -8,7 +8,7 @@ export class Opener
     }
 }
 
-export class Intro extends Opener 
+class Intro extends Opener 
 {
     constructor() 
     {
@@ -45,7 +45,7 @@ export class Intro extends Opener
     }
 }
 
-export class IntroGerman extends Intro 
+class IntroGerman extends Intro 
 {
     constructor(lang)
     {
@@ -57,7 +57,7 @@ export class IntroGerman extends Intro
     }
 }
 
-export class IntroEnglish extends Intro 
+class IntroEnglish extends Intro 
 {
     constructor()
     {
@@ -69,7 +69,7 @@ export class IntroEnglish extends Intro
     }
 }
 
-export class Starter extends Opener 
+class Starter extends Opener 
 {
     constructor() 
     {
@@ -113,3 +113,5 @@ export class Starter extends Opener
         this.message.removeChild(eng)
     }
 }
+
+export { Starter }

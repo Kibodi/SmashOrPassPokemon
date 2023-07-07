@@ -1,5 +1,5 @@
 import { PokemonGetter } from "./pokemon.js";
-export class Game
+class Game
 {
     constructor()
     {
@@ -140,7 +140,7 @@ export class Game
     }
 }
 
-export class GameGerman extends Game
+class GameGerman extends Game
 {
     constructor()
     {
@@ -152,7 +152,7 @@ export class GameGerman extends Game
     }
 }
 
-export class GameEnglish extends Game
+class GameEnglish extends Game
 {
     constructor()
     {
@@ -163,3 +163,5 @@ export class GameEnglish extends Game
         this.lang_pass = "Would not Smash: "
     }
 }
+
+export { Game, GameGerman, GameEnglish}

@@ -1,4 +1,4 @@
-export class PokemonGetter
+class PokemonGetter
 {
     async pokemonName(id, lang) 
     {
@@ -29,3 +29,4 @@ export class PokemonGetter
         return species.count
     }
 }
+export { PokemonGetter }
