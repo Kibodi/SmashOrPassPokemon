@@ -4,11 +4,11 @@ class PokemonGetter
     {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
         const pokemon = await res.json()
-        for (let i = 0; i < pokemon.names.length; i++)
+        for (const languageName of pokemon.names)
         {
-            if (pokemon.names[i].language.name == 'de' && lang == "ger")
+            if (languageName.language.name == 'de' && lang == "ger")
             {
-                return pokemon.names[i].name
+                return languageName.name
             }
         }
         return pokemon.name[0].toUpperCase() + pokemon.name.slice(1)

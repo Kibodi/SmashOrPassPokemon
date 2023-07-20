@@ -39,15 +39,7 @@ class Game
         img.addEventListener("click", () =>
         {
             this.shiny = !this.shiny;
-            document.getElementById(this.imgId).src = this.PokeGetter.pokemonArt(this.stage, this.shiny)
-            if (this.shiny)
-            {
-                document.getElementById(this.h1Id).innerHTML = "Shiny " + this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`
-            }
-            else
-            {
-                document.getElementById(this.h1Id).innerHTML = this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`
-            }
+            this.loadImage(this.imgId)
 
         })
         
@@ -126,17 +118,21 @@ class Game
         } else 
         {
             this.currentPokemon = await this.PokeGetter.pokemonName(this.stage, this.lang)
-            if (this.shiny)
-            {
-                document.getElementById(this.h1Id).innerHTML = "Shiny " + this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`
-            }
-            else 
-            {
-                document.getElementById(this.h1Id).innerHTML = this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`
-            }
-            document.getElementById("pokeart").src = this.PokeGetter.pokemonArt(this.stage, this.shiny)
-            console.log(this.stage)
+            this.loadImage("pokeart")
         }
+    }
+
+    loadImage(imgID)
+    {
+        if (this.shiny)
+        {
+            document.getElementById(this.h1Id).innerHTML = "Shiny " + this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`
+        }
+        else 
+        {
+            document.getElementById(this.h1Id).innerHTML = this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`
+        }
+        document.getElementById(imgID).src = this.PokeGetter.pokemonArt(this.stage, this.shiny)
     }
 }
 
@@ -164,4 +160,4 @@ class GameEnglish extends Game
     }
 }
 
-export { Game, GameGerman, GameEnglish}
+export { Game, GameGerman, GameEnglish }
