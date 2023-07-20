@@ -39,7 +39,7 @@ class Game
         img.addEventListener("click", () =>
         {
             this.shiny = !this.shiny;
-            this.loadImage(this.imgId)
+            this.updateImage(this.imgId)
 
         })
         
@@ -118,11 +118,11 @@ class Game
         } else 
         {
             this.currentPokemon = await this.PokeGetter.pokemonName(this.stage, this.lang)
-            this.loadImage("pokeart")
+            this.updateImage("pokeart")
         }
     }
 
-    loadImage(imgID)
+    updateImage(imgID)
     {
         if (this.shiny)
         {
