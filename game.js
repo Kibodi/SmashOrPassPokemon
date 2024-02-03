@@ -36,8 +36,10 @@ class Game
         img.id = "pokeart";
         this.imgId = img.id;
         img.src = this.PokeGetter.pokemonArt(this.stage, this.shiny);
+        img.onload = () => this.enableButtons();
         img.addEventListener("click", () =>
         {
+            this.disableButtons();
             this.shiny = !this.shiny;
             this.updateImage(this.imgId);
 
@@ -100,6 +102,7 @@ class Game
 
     async update(stat, Array)
     {
+        this.disableButtons();
         if (this.stage <= this.pokemonCount) 
         {
             stat.textContent += this.currentPokemon + ", ";
@@ -133,6 +136,18 @@ class Game
             document.getElementById(this.h1Id).innerHTML = this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`;
         }
         document.getElementById(imgID).src = this.PokeGetter.pokemonArt(this.stage, this.shiny);
+    }
+
+    enableButtons()
+    {
+        document.getElementById("smashButton").removeAttribute("disabled");
+        document.getElementById("passButton").removeAttribute("disabled");
+    }
+
+    disableButtons()
+    {
+        document.getElementById("smashButton").setAttribute("disabled", "disabled");
+        document.getElementById("passButton").setAttribute("disabled", "disabled")
     }
 }
 
