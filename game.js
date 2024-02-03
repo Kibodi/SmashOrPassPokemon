@@ -129,13 +129,29 @@ class Game
     {
         if (this.shiny)
         {
-            document.getElementById(this.h1Id).innerHTML = "Shiny " + this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`;
+            if (this.imageExists(this.PokeGetter.pokemonArt(this.stage, true)))
+            {
+                document.getElementById(this.h1Id).innerHTML = "Shiny " + this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`;
+                document.getElementById(imgID).src = this.PokeGetter.pokemonArt(this.stage, true);
+            } else
+            {
+                document.getElementById(this.h1Id).innerHTML = this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`;
+                document.getElementById(imgID).src = this.PokeGetter.pokemonArt(this.stage, false);
+            }
         }
         else 
         {
             document.getElementById(this.h1Id).innerHTML = this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`;
+            document.getElementById(imgID).src = this.PokeGetter.pokemonArt(this.stage, false);
         }
-        document.getElementById(imgID).src = this.PokeGetter.pokemonArt(this.stage, this.shiny);
+    }
+    
+    imageExists(imageUrl)
+    {
+        var http = new XMLHttpRequest();
+        http.open('HEAD', imageUrl, false);
+        http.send();
+        return http.status !== 404;
     }
 
     enableButtons()
