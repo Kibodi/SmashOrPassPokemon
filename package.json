@@ -1,0 +1,14 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rm -f *.js && rm -rf ./build && tsc && rollup ./build/main.js --file main.max.js --format cjs && terser main.max.js --compress --mangle --ecma 3 --output main.js && rm main.max.js",
+    "server": "rm -f *.js && rm -rf ./build && tsc && rollup ./build/main.js --file main.max.js --format cjs && terser main.max.js --compress --mangle --ecma 3 --output main.js && rm main.max.js && python3 -m http.server 8000",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^4.x.x",
+    "rollup": "^2.x.x",
+    "terser": "^5.x.x"
+  }
+}

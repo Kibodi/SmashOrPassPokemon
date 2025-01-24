@@ -2,6 +2,7 @@ import { Game, GameEnglish, GameGerman } from "./game.js";
 
 class Opener 
 {
+    message:HTMLElement
     constructor() 
     {
         this.message = document.getElementById("welcome_message");
@@ -10,6 +11,11 @@ class Opener
 
 class Intro extends Opener 
 {
+    lang: string
+    heading: string
+    welcome: string
+    start: string
+    game: Game
     constructor() 
     {
         super();
@@ -20,10 +26,10 @@ class Intro extends Opener
         this.game;
     }
 
-    startIntro(title) 
+    startIntro(title:HTMLHeadingElement) 
     {
-        var p = document.createElement("p");
-        var startbutton = document.createElement("button");
+        var p:HTMLParagraphElement = document.createElement("p");
+        var startbutton:HTMLButtonElement = document.createElement("button");
 
         title.textContent = this.heading;
 
@@ -47,7 +53,7 @@ class Intro extends Opener
 
 class IntroGerman extends Intro 
 {
-    constructor(lang)
+    constructor()
     {
         super();
         this.lang = "ger";
@@ -71,6 +77,8 @@ class IntroEnglish extends Intro
 
 class Starter extends Opener 
 {
+    intGer: IntroGerman
+    intEng: IntroEnglish
     constructor() 
     {
         super();
@@ -80,9 +88,9 @@ class Starter extends Opener
 
     start() 
     {
-        var title = document.createElement("h1");
-        var deutsch = document.createElement("button");
-        var english = document.createElement("button");
+        var title:HTMLHeadingElement = document.createElement("h1");
+        var deutsch:HTMLButtonElement = document.createElement("button");
+        var english:HTMLButtonElement = document.createElement("button");
 
         title.id = "schrift";
         title.textContent = "Select Language";
@@ -107,7 +115,7 @@ class Starter extends Opener
         this.message.appendChild(english);
     }
 
-    delete_buttons(ger, eng) 
+    delete_buttons(ger:HTMLButtonElement, eng:HTMLButtonElement) 
     {
         this.message.removeChild(ger);
         this.message.removeChild(eng);

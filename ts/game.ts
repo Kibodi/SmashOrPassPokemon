@@ -1,6 +1,27 @@
 import { PokemonGetter } from "./pokemon.js";
 class Game
 {
+    lang:string
+    lang_smash:string
+    lang_pass:string
+    smashArray:Array<string>
+    passArary:Array<string>
+    stage:number
+    pokemonCount:number
+    currentPokemon:string
+    PokeGetter:PokemonGetter
+    poke_container:HTMLDivElement
+    titelrino:HTMLDivElement
+    statsDiv:HTMLDivElement
+    buttons:HTMLDivElement
+    imgId:string
+    h1Id:string
+    shiny:boolean
+    statS:HTMLParagraphElement
+    statP:HTMLParagraphElement
+    statSNum:HTMLParagraphElement
+    statPNum:HTMLParagraphElement
+     
     constructor()
     {
         this.smashArray = [];
@@ -10,10 +31,10 @@ class Game
         this.currentPokemon;
 
         this.PokeGetter = new PokemonGetter();
-        this.poke_container = document.getElementById("poke_container");
-        this.titelrino = document.getElementById("titelrino");
-        this.statsDiv = document.getElementById("stats");
-        this.buttons = document.getElementById("buttons");
+        this.poke_container = document.getElementById("poke_container") as HTMLDivElement;
+        this.titelrino = document.getElementById("titelrino") as HTMLDivElement;
+        this.statsDiv = document.getElementById("stats") as HTMLDivElement;
+        this.buttons = document.getElementById("buttons") as HTMLDivElement;
         this.imgId;
         this.h1Id;
 
@@ -73,7 +94,7 @@ class Game
         statSNumElement.textContent = "Smash: " + this.passArary.length;
         this.statsDiv.appendChild(statSNumElement);
         this.statsDiv.appendChild(document.createElement("br"));
-        this.statSNum = document.getElementById("statSNum");
+        this.statSNum = document.getElementById("statSNum") as HTMLParagraphElement;
 
         //Number of Passes
         var statPNumElement = document.createElement("p");
@@ -81,7 +102,7 @@ class Game
         statPNumElement.textContent = "Pass: " + this.passArary.length;
         this.statsDiv.appendChild(statPNumElement);
         this.statsDiv.appendChild(document.createElement("br"));
-        this.statPNum = document.getElementById("statPNum");
+        this.statPNum = document.getElementById("statPNum") as HTMLParagraphElement;
 
         //Smashed Pokemon
         var statSElement = document.createElement("p");
@@ -89,7 +110,7 @@ class Game
         statSElement.textContent = this.lang_smash;
         this.statsDiv.appendChild(statSElement);
         this.statsDiv.appendChild(document.createElement("br"));
-        this.statS = document.getElementById("statS");
+        this.statS = document.getElementById("statS") as HTMLParagraphElement;
 
         //Passed Pokemon
         var statPElement = document.createElement("p");
@@ -97,10 +118,10 @@ class Game
         statPElement.textContent = this.lang_pass;
         this.statsDiv.appendChild(statPElement);
         this.statsDiv.appendChild(document.createElement("br"));
-        this.statP = document.getElementById("statP");
+        this.statP = document.getElementById("statP") as HTMLParagraphElement;
     }
 
-    async update(stat, Array)
+    async update(stat:HTMLParagraphElement, Array:Array<string>)
     {
         this.disableButtons();
         if (this.stage <= this.pokemonCount) 
@@ -125,28 +146,28 @@ class Game
         }
     }
 
-    updateImage(imgID)
+    updateImage(imgID:string)
     {
         if (this.shiny)
         {
             if (this.imageExists(this.PokeGetter.pokemonArt(this.stage, true)))
             {
                 document.getElementById(this.h1Id).innerHTML = "Shiny " + this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`;
-                document.getElementById(imgID).src = this.PokeGetter.pokemonArt(this.stage, true);
+                (document.getElementById(imgID) as HTMLImageElement).src = this.PokeGetter.pokemonArt(this.stage, true);
             } else
             {
                 document.getElementById(this.h1Id).innerHTML = this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`;
-                document.getElementById(imgID).src = this.PokeGetter.pokemonArt(this.stage, false);
+                (document.getElementById(imgID) as HTMLImageElement).src = this.PokeGetter.pokemonArt(this.stage, false);
             }
         }
         else 
         {
             document.getElementById(this.h1Id).innerHTML = this.currentPokemon + " #" + this.stage + `/#${this.pokemonCount}`;
-            document.getElementById(imgID).src = this.PokeGetter.pokemonArt(this.stage, false);
+            (document.getElementById(imgID) as HTMLImageElement).src = this.PokeGetter.pokemonArt(this.stage, false);
         }
     }
     
-    imageExists(imageUrl)
+    imageExists(imageUrl:string)
     {
         var http = new XMLHttpRequest();
         http.open('HEAD', imageUrl, false);

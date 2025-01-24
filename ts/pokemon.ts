@@ -1,6 +1,6 @@
 class PokemonGetter
 {
-    async pokemonName(id, lang) 
+    async pokemonName(id:number, lang:string) 
     {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
         const pokemon = await res.json();
